@@ -1,0 +1,5 @@
+public enum MenuItemLabels {
+
+    DISH, DRESSING, DINNERSALAD, SIDEOFENTREE, APPETIZER, ENTREE;
+
+}
