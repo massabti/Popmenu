@@ -4,10 +4,12 @@ public class Order {
 
     private ArrayList<MenuItem> orderList;
     private int orderPrice;
+    private Restaurant restaurant;
 
-    public Order() {
+    public Order(Restaurant restaurant) {
         orderList = new ArrayList<MenuItem>();
         orderPrice = 0;
+
     }
 
     public ArrayList<MenuItem> getOrderList() {
@@ -17,8 +19,8 @@ public class Order {
 
 
     public void orderSaladAndDressing(MenuItem item1, MenuItem item2) {
-        if (!item1.getLabels().contains(MenuItemLabels.DINNERSALAD)
-                && !item2.getLabels().contains(MenuItemLabels.DINNERSALAD) ) {
+        if (!item1.getLabels().contains(MenuItemLabels.DISH)
+                && !item2.getLabels().contains(MenuItemLabels.DISH) ) {
             System.out.println("You have to select a salad");
             return;
         }
@@ -39,9 +41,9 @@ public class Order {
             System.out.println("You have to select a dressing");
             return;
         }
-        if (!item1.getLabels().contains(MenuItemLabels.DINNERSALAD)
-                && !item2.getLabels().contains(MenuItemLabels.DINNERSALAD)
-                && !item3.getLabels().contains(MenuItemLabels.DINNERSALAD)) {
+        if (!item1.getLabels().contains(MenuItemLabels.SIDEOFENTREE)
+                && !item2.getLabels().contains(MenuItemLabels.SIDEOFENTREE)
+                && !item3.getLabels().contains(MenuItemLabels.SIDEOFENTREE)) {
             System.out.println("You have to select a salad");
             return;
         }
@@ -97,5 +99,9 @@ public class Order {
         for (int i = 0; i < orderList.size(); i++) {
             orderPrice += orderList.get(i).getPrice();
         }
+    }
+
+    public void pushOrderToRestaurant() {
+        restaurant.incomingOrder(this);
     }
 }

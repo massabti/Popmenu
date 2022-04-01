@@ -39,18 +39,7 @@ public class Customer {
         updateProbArr(Day);
     }
 
-    public double calcProbDay(int Day) {
-        double[] probDayArr = new double[7];
-        int sumTotalDays = 0;
-        for (int i = 0; i < 7; i++) {
-            sumTotalDays += dayFreq[i];
-            probDayArr[i] = dayFreq[i] + 0.1;
-        }
-        for (int i = 0; i < 7; i++) {
-            probDayArr[i] /= sumTotalDays + 0.7;
-        }
-        return probDayArr[Day];
-    }
+
     public void updateProbArr(int Day) {
         for (int i = 0; i < 7; i++) {
             if (i == Day) {

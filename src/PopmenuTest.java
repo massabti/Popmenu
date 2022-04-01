@@ -105,7 +105,30 @@ public class PopmenuTest {
         assertTrue(myRestaurant.getMenus().get(1).getMenuItems().get(2).getLabels().contains(MenuItemLabels.APPETIZER));
         assertEquals(3,myRestaurant.getMenus().get(0).getMenuItems().size());
         assertEquals(4,myRestaurant.getMenus().get(1).getMenuItems().size());
+    }
 
+    @Test
+    public void testOrderSalad() {
+        Restaurant myRestaurant = new Restaurant("Popmenu Restaurant");
+        assertEquals(0, myRestaurant.getPendingItemsOrdered().size());
+        MenuItem salad = new MenuItem("Chicken Salad");
+        salad.addLabel(MenuItemLabels.DISH);
+        salad.addLabel(MenuItemLabels.SIDEOFENTREE);
+        MenuItem ranch = new MenuItem("Ranch");
+        ranch.addLabel(MenuItemLabels.DRESSING);
+        Order newOrder = new Order(myRestaurant);
+        newOrder.orderSaladAndDressing(salad, ranch);
+        assertEquals(2, newOrder.getOrderList().size());
+        MenuItem entree = new MenuItem("Main Entree");
+        entree.addLabel(MenuItemLabels.ENTREE);
+        Order order2 = new Order(myRestaurant);
+        assertEquals(0, order2.getOrderList().size());
+        order2.orderSaladAsSide(entree, salad, ranch);
+        assertEquals(3, order2.getOrderList().size());
+        Order otherOrder = new Order(myRestaurant);
+        assertEquals(0, otherOrder.getOrderList().size());
+        otherOrder.orderSideCombo(ranch, entree, salad);
+        assertEquals(3, otherOrder.getOrderList().size());
     }
 
 

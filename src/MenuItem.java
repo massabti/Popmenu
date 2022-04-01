@@ -41,6 +41,7 @@ public class MenuItem {
         labels = new HashSet<MenuItemLabels>();
     }
 
+
     public String getName() {
         return name;
     }

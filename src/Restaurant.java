@@ -48,7 +48,7 @@ public class Restaurant {
         customersList.add(newCustomer);
     }
 
-
-
-
+    public ArrayList<MenuItem> getPendingItemsOrdered() {
+        return pendingItemsOrdered;
+    }
 }
